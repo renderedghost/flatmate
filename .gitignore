@@ -1,26 +1,27 @@
-# Logs
-logs
+!.vscode/extensions.json
+.DS_Store
+.eslintrc.cjs
+.idea
+.prettierrc
+.storybook
+.vscode/*
+*.local
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
+*.njsproj
+*.ntvs*
+*.sln
+*.suo
+*.sw?
+*storybook.log
 dist
 dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-*storybook.log
+lerna-debug.log*
+logs
+node_modules
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vite/* # Vite cache
+.storybook-out/* # Storybook build output, if different from dist or dist-ssr
+.tailwindcss/* # Tailwind CSS JIT cache
