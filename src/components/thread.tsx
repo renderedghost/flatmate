@@ -24,7 +24,10 @@ const Thread: React.FC<ThreadProps> = ({
     const adapter = useMemo(() => nlux, []);
 
     const defaultDisplayOptions: DisplayOptions = {
+        themeId: 'nova',
         colorScheme: 'auto',
+        width: '100%',
+        height: '100%'
     };
 
     const defaultComposerOptions: ComposerOptions = {

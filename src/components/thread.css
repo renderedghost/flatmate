@@ -1,4 +1,13 @@
+#composer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .theme-flatmate.nlux-AiChat-root.nlux-theme-nova {
+  height: 100%;
+  min-height: 600px;
+
   /* Override top-level chat room colors */
   --nlux-ChatRoom--BackgroundColor: #0c0c0e;
   --nlux-ChatRoom--BorderColor: #24233d;
@@ -15,12 +24,12 @@
   --nlux-ChatItem-Message-BubbleLayout--BorderRadius: 5px;
   --nlux-PromptInput--BorderRadius: 5px;
   --nlux-SubmitButton--BorderRadius: 5px;
-  
+
   /* Override input colors */
   --nlux-PromptInput--BackgroundColor: #161620;
   --nlux-PromptInput-Active--BackgroundColor: #161620;
   --nlux-PromptInput-Disabled--BackgroundColor: #161620;
- 
+
   /* Override submit button colors */
   --nlux-SubmitButton--BackgroundColor: #161620;
   --nlux-SubmitButton-Active--BackgroundColor: #24233d;
