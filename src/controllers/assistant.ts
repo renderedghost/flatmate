@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createAssistant, createThread, addMessage, runAssistant } from '../assistants/gpt4Backend';
+import { createAssistant, createThread, addMessage, runAssistant } from '../assistants/gpt4';
 
 // Handler for creating an assistant
 export const createAssistantHandler = async (_req: Request, res: Response) => {
