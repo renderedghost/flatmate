@@ -2,6 +2,8 @@
 .DS_Store
 .env
 .eslintrc.cjs
+.git
+.git/
 .idea
 .idea/
 .prettierrc
