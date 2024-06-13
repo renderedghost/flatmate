@@ -7,7 +7,7 @@ export const personas: PersonaOptions = {
     assistant: {
         name: 'FlatMate',
         avatar: assistantAvatar,
-        tagline: 'Fuck em All!',
+        tagline: 'Love em All!',
     },
     user: {
         name: 'You',

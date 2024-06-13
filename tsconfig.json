@@ -22,9 +22,7 @@
       "@/components/*": ["components/*"],
       "@/lib/utils/*": ["lib/utils/*"]
     },
-    "forceConsistentCasingInFileNames": true,
-    "composite": true
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src/**/*"]
 }

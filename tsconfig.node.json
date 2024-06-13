@@ -11,8 +11,10 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "jsx": "react-jsx",
-    "composite": true
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["node_modules", "**/*.test.ts"]
+  "exclude": ["node_modules", "**/*.test.ts", "src/main.tsx"]
 }
