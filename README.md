@@ -52,75 +52,22 @@ npm run dev
 > [!IMPORTANT]
 > The application will be available at [http://localhost:3000].
 
-### clean
 
-```zsh
-npm run clean
-```
+| **Name**            | **Command**               | **Purpose**                                                                         | **Functionality**                                                                                 | **When to Run**                                                                                                   |
+| ------------------- | ------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **clean**           | `npm run clean`           | Removes the `dist` directory, which contains the built files.                       | Executes a command to delete the `dist` directory and all its contents.                           | Use this script to clean up the build artifacts before creating a new build.                                      |
+| **build**           | `npm run build`           | Compiles the TypeScript code, builds the project using Vite, and processes the CSS. | Runs TypeScript compiler, builds the application with Vite, and then runs the `build:css` script. | Execute this script to generate a new build of the application.                                                   |
+| **build:css**       | `npm run build:css`       | Builds and minifies the CSS files using Tailwind CSS.                               | Processes the global CSS file and outputs a minified version to the `dist` directory.             | This script is automatically called by the `build` script but can be run separately if only CSS changes are made. |
+| **start:express**   | `npm run start:express`   | Starts the Express server.                                                          | Runs the Node.js script to start the backend server from the `dist` directory.                    | Use this script to start the backend server, usually after a successful build.                                    |
+| **start:storybook** | `npm run start:storybook` | Starts Storybook for UI component development.                                      | Launches Storybook on port 6006.                                                                  | Execute this script to start Storybook and develop or test UI components in isolation.                            |
+| **build-all**       | `npm run build-all`       | Cleans the build directory and creates a new build.                                 | Runs the `clean` script followed by the `build` script.                                           | Use this script to reset the build environment and generate a fresh build.                                        |
+| **start-all**       | `npm run start-all`       | Starts both the Express server and Storybook simultaneously.                        | Uses `concurrently` to run the `start:express` and `start:storybook` scripts at the same time.    | Execute this script to run both the backend server and Storybook together, useful for development.                |
 
-- **Purpose**: Removes the `dist` directory, which contains the built files.
-- **Functionality**: Executes a command to delete the `dist` directory and all its contents.
-- **When to Run**: Use this script to clean up the build artifacts before creating a new build.
-
-### build
-
-```zsh
-npm run build
-```
-
-- **Purpose**: Compiles the TypeScript code, builds the project using Vite, and processes the CSS.
-- **Functionality**: Runs TypeScript compiler, builds the application with Vite, and then runs the `build:css` script.
-- **When to Run**: Execute this script to generate a new build of the application.
-
-### build:css
-
-```zsh
-npm run build:css
-```
-
-- **Purpose**: Builds and minifies the CSS files using Tailwind CSS.
-- **Functionality**: Processes the global CSS file and outputs a minified version to the `dist` directory.
-- **When to Run**: This script is automatically called by the `build` script but can be run separately if only CSS changes are made.
-
-> [!IMPORTANT]
-> This will generate the production-ready files in the `dist` directory.
-
-### start:express
-
-```zsh
-npm run start:express
-```
-
-- **Purpose**: Starts the Express server.
-- **Functionality**: Runs the Node.js script to start the backend server from the `dist` directory.
-- **When to Run**: Use this script to start the backend server, usually after a successful build.
-
-### start:storybook
-
-`npm run start:storybook`
-
-- **Purpose**: Starts Storybook for UI component development.
-- **Functionality**: Launches Storybook on port 6006.
-- **When to Run**: Execute this script to start Storybook and develop or test UI components in isolation.
 
 > [!IMPORTANT]
 > Storybook will be available at [http://localhost:6006].
 
-### build-all
 
-`npm run build-all`
-
-- **Purpose**: Cleans the build directory and creates a new build.
-- **Functionality**: Runs the `clean` script followed by the `build` script.
-- **When to Run**: Use this script to reset the build environment and generate a fresh build.
-
-### start-all
-
-`npm run start-all`
-
-- **Purpose**: Starts both the Express server and Storybook simultaneously.
-- **Functionality**: Uses `concurrently` to run the `start:express` and `start:storybook` scripts at the same time.
-- **When to Run**: Execute this script to run both the backend server and Storybook together, useful for development.
 
 ## Project Structure
 
