@@ -15,6 +15,7 @@
   "dependencies": {
     "@nlux/openai-react": "^2.5.7",
     "@nlux/react": "^2.5.7",
+    "@nlux/themes": "^2.5.10",
     "@storybook/addon-a11y": "^8.1.6",
     "@storybook/addon-actions": "^8.1.6",
     "@storybook/addon-controls": "^8.1.6",
