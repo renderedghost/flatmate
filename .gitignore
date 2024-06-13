@@ -1,9 +1,15 @@
 !.vscode/extensions.json
 .DS_Store
+.env
 .eslintrc.cjs
 .idea
+.idea/
 .prettierrc
 .storybook
+.storybook-out/* # Storybook build output, if different from dist or dist-ssr
+.tailwindcss/* # Tailwind CSS JIT cache
+.vite/* # Vite cache
+.vscode/
 .vscode/*
 *.local
 *.log
@@ -15,13 +21,13 @@
 *storybook.log
 dist
 dist-ssr
+dist/
 lerna-debug.log*
 logs
 node_modules
+node_modules/
 npm-debug.log*
 pnpm-debug.log*
+storybook-static/
 yarn-debug.log*
 yarn-error.log*
-.vite/* # Vite cache
-.storybook-out/* # Storybook build output, if different from dist or dist-ssr
-.tailwindcss/* # Tailwind CSS JIT cache
