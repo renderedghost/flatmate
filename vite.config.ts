@@ -1,12 +1,17 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default defineConfig({
+  server: {
+    port: parseInt(process.env.VITE_APP_PORT || '5173'),
+  },
   plugins: [react()],
   build: {
     rollupOptions: {
       input: '/src/main.tsx',
-      // Specify dependencies that should not be bundled
       external: ['react', 'react-dom'],
     },
   },

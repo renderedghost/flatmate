@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 // Load environment variables from .env file
 dotenv.config();
 
-const port = process.env.EXPRESS_SERVER__PORT || 3000;
+const port = process.env.VITE_BACKEND_PORT || 3000;
 const app = express();
 
 app.use(bodyParser.json());

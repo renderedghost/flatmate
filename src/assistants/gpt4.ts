@@ -45,6 +45,7 @@ const createAssistant = async (): Promise<Assistant> => {
             instructions: instructions,
             model: 'gpt-4',
             top_p: 0.9,
+            temperature: 0.3,
         }),
     });
 
@@ -100,8 +101,9 @@ const runAssistant = async (assistantId: string, threadId: string): Promise<Open
     return data as OpenAIResponse;
 };
 
-// WebSocket server to handle streaming responses
-const wss = new WebSocketServer({ port: 8080 });
+const port = parseInt(process.env.VITE_WEBSOCKET_PORT || '8080', 10);
+
+const wss = new WebSocketServer({ port });
 
 wss.on('connection', (ws: WebSocket) => {
     console.log('Client connected');
