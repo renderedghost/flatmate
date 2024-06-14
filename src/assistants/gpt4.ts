@@ -14,24 +14,55 @@ if (!apiKey) {
 
 interface Assistant {
     id: string;
-    // Add other necessary fields here
+    name: string;
+    created_at: string;
+    model: string;
+    instructions: string;
 }
 
 interface Thread {
     id: string;
-    // Add other necessary fields here
+    assistant_id: string;
+    created_at: string;
+    messages: string[];
+}
+
+interface LogProbs {
+    tokens: string[];
+    token_logprobs: number[];
+    top_logprobs: Array<Record<string, number>>;
+    text_offset: number[];
+}
+
+interface Choice {
+    text: string;
+    index: number;
+    logprobs: LogProbs;
+    finish_reason: string;
+}
+
+interface Usage {
+    prompt_tokens: number;
+    completion_tokens: number;
+    total_tokens: number;
 }
 
 interface OpenAIResponse {
-    // Define the structure based on the expected response
-    // Example fields (replace with actual fields as needed):
-    message?: string;
-    // Add other fields here
+    id: string;
+    object: string;
+    created: number;
+    model: string;
+    choices: Choice[];
+    usage: Usage;
 }
 
 const createAssistant = async (): Promise<Assistant> => {
     const instructionsPath = join(__dirname, 'gpt4instructions.md');
-    const instructions = readFileSync(instructionsPath, 'utf-8');
+    let instructions = readFileSync(instructionsPath, 'utf-8');
+
+    // Add additional context to the instructions
+    instructions += "\n\n# Context\n";
+    instructions += "You are a highly accurate customer support assistant for FlatMate. Your role is to assist users with their rental problems in Berlin. Be concise, polite, and provide accurate information. Always prioritize resolving the user's issue efficiently.";
 
     const response = await fetch('https://api.openai.com/v1/assistants', {
         method: 'POST',
@@ -42,7 +73,11 @@ const createAssistant = async (): Promise<Assistant> => {
         body: JSON.stringify({
             name: 'FlatMate',
             instructions: instructions,
-            model: 'gpt-3.5-turbo',
+            model: 'gpt-4',
+            parameters: {
+                top_p: 0.95,
+                temperature: 0.3
+            }
         }),
     });
 
