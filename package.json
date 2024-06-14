@@ -11,7 +11,7 @@
         "build:css": "tailwindcss -i ./src/styles/globals.css -o ./dist/output.css --minify",
         "build:storybook": "storybook build",
         "start:all": "concurrently \"npm run start:express\" \"npm run start:storybook\"",
-        "start:express": "node --loader ts-node/esm ./src/server.ts",
+        "start:express": "ts-node -r tsconfig-paths/register ./src/server.ts",
         "start:storybook": "storybook dev -p ${VITE_STORYBOOK_PORT:-6006}"
     },
     "dependencies": {
@@ -30,7 +30,8 @@
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.23.1",
         "tailwind-merge": "^2.3.0",
-        "tailwindcss-animate": "^1.0.7"
+        "tailwindcss-animate": "^1.0.7",
+        "tsconfig-paths": "^4.2.0"
     },
     "devDependencies": {
         "@chromatic-com/storybook": "^1.5.0",

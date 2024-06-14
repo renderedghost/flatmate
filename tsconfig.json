@@ -1,29 +1,29 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
-    "useDefineForClassFields": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
     "moduleResolution": "node",
-    "noImplicitAny": false,
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2020",
+    "useDefineForClassFields": true,
     "paths": {
       "@/components/*": ["components/*"],
       "@/lib/utils/*": ["lib/utils/*"]
-    },
-    "forceConsistentCasingInFileNames": true
+    }
   },
   "include": ["src/**/*"],
   "ts-node": {
