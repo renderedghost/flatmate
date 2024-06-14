@@ -1,5 +1,6 @@
 import { ChatAdapter, StreamingAdapterObserver } from '@nlux/core';
 import WebSocket, { MessageEvent } from 'ws';
+import { OpenAIResponse } from './gpt4';
 
 export const nlux: ChatAdapter = {
     streamText: (message: string, observer: StreamingAdapterObserver): void => {
@@ -14,7 +15,16 @@ export const nlux: ChatAdapter = {
         // Handle incoming messages from the WebSocket server
         socket.onmessage = (event: MessageEvent) => {
             const data = event.data.toString(); // Convert Buffer to string
-            observer.next(data); // Notify observer of new data
+            try {
+                const response: OpenAIResponse = JSON.parse(data);
+                if (response.choices && response.choices.length > 0) {
+                    observer.next(response.choices[0].text); // Use the text field from the first choice
+                } else {
+                    observer.error(new Error('No choices returned in the response'));
+                }
+            } catch (err) {
+                observer.error(err as Error); // Ensure the error is of type Error
+            }
         };
 
         // Handle WebSocket connection close event
