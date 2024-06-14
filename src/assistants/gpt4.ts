@@ -6,10 +6,10 @@ import WebSocket, { WebSocketServer } from 'ws';
 
 dotenv.config();
 
-const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+const apiKey = process.env.OPENAI_API_KEY;
 
 if (!apiKey) {
-    throw new Error('Missing VITE_OPENAI_API_KEY in environment variables');
+    throw new Error('Missing OPENAI_API_KEY in environment variables');
 }
 
 interface Assistant {
@@ -45,7 +45,6 @@ const createAssistant = async (): Promise<Assistant> => {
             instructions: instructions,
             model: 'gpt-4',
             top_p: 0.9,
-            temperature: 0.3,
         }),
     });
 
@@ -101,9 +100,8 @@ const runAssistant = async (assistantId: string, threadId: string): Promise<Open
     return data as OpenAIResponse;
 };
 
-const port = parseInt(process.env.VITE_WEBSOCKET_PORT || '8080', 10);
-
-const wss = new WebSocketServer({ port });
+// WebSocket server to handle streaming responses
+const wss = new WebSocketServer({ port: 8080 });
 
 wss.on('connection', (ws: WebSocket) => {
     console.log('Client connected');
