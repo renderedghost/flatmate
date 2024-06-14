@@ -12,7 +12,7 @@
         "build:storybook": "storybook build",
         "start:all": "concurrently \"npm run start:express\" \"npm run start:storybook\"",
         "start:express": "node --loader ts-node/esm ./src/server.ts",
-        "start:storybook": "storybook dev -p 6006"
+        "start:storybook": "storybook dev -p ${VITE_STORYBOOK_PORT:-6006}"
     },
     "dependencies": {
         "@nlux/openai-react": "^2.5.7",
