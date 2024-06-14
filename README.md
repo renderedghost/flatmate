@@ -6,6 +6,16 @@
 
 - TBD
 
+## Important Locations
+
+- Frontend App: [http://localhost:5173]
+- Storybook: [http://localhost:6006]
+- Backend App: [http://localhost:3000]
+- Webhooks: [http://localhost:8080]
+
+> [!CAUTION]
+> Changing the `.env` file will break these links.
+
 ## Installation
 
 To get started with Flatmate, follow these steps:
@@ -14,7 +24,6 @@ To get started with Flatmate, follow these steps:
 
 ```sh
 git clone https://github.com/renderedghost/flatmate.git
-cd flatmate
 ```
 
 ### 2. Install Dependencies
@@ -25,19 +34,39 @@ npm install
 
 ### 3. Set up your Environment Variables
 
-Create a `.env` file in the root of the project and add the necessary environment variables.
+These environment variables are referenced in the app configs and scripts.
 
-Here is an example:
+> [!IMPORTANT]
+>The application uses these default values as a fallback, but you can change them according to your development environment needs.
 
-```env
-TDB_URL=https://api.example.com
+#### Set Up Your `.env` File
+
+Create a `.env` file in the root of the project and add the following variables.
+
+```dotenv
+# PORTS
+VITE_APP_PORT=5173
+VITE_BACKEND_PORT=3000
+VITE_STORYBOOK_PORT=6006
+VITE_WEBSOCKET_PORT=8080
+
+# API Keys and Secrets
+VITE_OPENAI_API_KEY=yourOpenAISecretKey
 ```
+
+These variables define the default port settings and API keys required for the application to function correctly. You can customize the port values if needed.
+
+**Explanation of Environment Variables:**
+
+- `VITE_APP_PORT`: Specifies the port on which the frontend application will run. The default value is `5173`.
+- `VITE_BACKEND_PORT`: Specifies the port on which the Express backend server will run. The default value is `3000`.
+- `VITE_STORYBOOK_PORT`: Specifies the port on which Storybook will run. The default value is `6006`.
+- `VITE_WEBSOCKET_PORT`: Specifies the port on which the WebSocket server will run. The default value is `8080`.
+- `VITE_OPENAI_API_KEY`: This is the API key required to access OpenAI services.
 
 ## Scripts
 
-### Overview
-
-> [!NOTE]
+> [!IMPORTANT]
 > **The `package.json` file contains various scripts that automate different tasks in the development lifecycle of the React app.** These scripts provide a streamlined workflow for developing, building, and running the React application. Each script is designed to handle specific tasks efficiently, making the development process more manageable and organized.
 
 ### Available Scripts
@@ -53,16 +82,6 @@ TDB_URL=https://api.example.com
 | **start:express**   | `npm run start:express`   | Starts the Express server.                                                          | Runs the Node.js script to start the backend server.                                           | Use this script to start the backend server during development.                                                  |
 | **start:storybook** | `npm run start:storybook` | Starts Storybook for UI component development.                                      | Launches Storybook on port 6006.                                                               | Execute this script to develop and test UI components in isolation.                                              |
 | **reset**           | `npm run reset`           | Cleans, builds, and starts all necessary services.                                  | Runs `clean:all`, `build:all`, and `start:all` scripts sequentially.                           | Use this script to completely reset the project, build all components, and start the necessary services.         |
-
----
-
-> [!IMPORTANT]
-> The application will be available at [http://localhost:3000].
-
----
-
-> [!IMPORTANT]
-> Storybook will be available at [http://localhost:6006].
 
 ## License
 
