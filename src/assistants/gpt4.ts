@@ -6,10 +6,10 @@ import WebSocket, { WebSocketServer } from 'ws';
 
 dotenv.config();
 
-const apiKey = process.env.OPENAI_API_KEY;
+const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
 if (!apiKey) {
-    throw new Error('Missing OPENAI_API_KEY in environment variables');
+    throw new Error('Missing VITE_OPENAI_API_KEY in environment variables');
 }
 
 interface Assistant {
