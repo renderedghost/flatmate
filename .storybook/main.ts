@@ -4,23 +4,27 @@ const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
   addons: [
-    "@storybook/addon-onboarding",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-    "@storybook/addon-mdx-gfm"
+    "@storybook/preset-create-react-app",
+    "@storybook/addon-docs"
   ],
 
-  framework: {
-    name: "@storybook/react-vite",
-    options: {},
+  framework: "@storybook/react-vite",
+
+  features: {
+    storyStoreV8: true,
   },
 
-  docs: {},
-
   typescript: {
-    reactDocgen: "react-docgen-typescript"
-  }
+    check: false, // disable type checking for faster builds
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+    },
+  },
 };
+
 export default config;
