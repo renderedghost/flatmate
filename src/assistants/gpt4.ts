@@ -15,54 +15,24 @@ if (!apiKey) {
 interface Assistant {
     id: string;
     name: string;
-    created_at: string;
-    model: string;
-    instructions: string;
+    created: string;
+    // Add other necessary fields here
 }
 
 interface Thread {
     id: string;
-    assistant_id: string;
-    created_at: string;
-    messages: string[];
+    created: string;
+    // Add other necessary fields here
 }
 
-interface LogProbs {
-    tokens: string[];
-    token_logprobs: number[];
-    top_logprobs: Array<Record<string, number>>;
-    text_offset: number[];
-}
-
-interface Choice {
-    text: string;
-    index: number;
-    logprobs: LogProbs;
-    finish_reason: string;
-}
-
-interface Usage {
-    prompt_tokens: number;
-    completion_tokens: number;
-    total_tokens: number;
-}
-
-interface OpenAIResponse {
-    id: string;
-    object: string;
-    created: number;
-    model: string;
-    choices: Choice[];
-    usage: Usage;
+export interface OpenAIResponse {
+    choices: Array<{ text: string }>;
+    // Add other fields here
 }
 
 const createAssistant = async (): Promise<Assistant> => {
     const instructionsPath = join(__dirname, 'gpt4instructions.md');
-    let instructions = readFileSync(instructionsPath, 'utf-8');
-
-    // Add additional context to the instructions
-    instructions += "\n\n# Context\n";
-    instructions += "You are a highly accurate customer support assistant for FlatMate. Your role is to assist users with their rental problems in Berlin. Be concise, polite, and provide accurate information. Always prioritize resolving the user's issue efficiently.";
+    const instructions = readFileSync(instructionsPath, 'utf-8');
 
     const response = await fetch('https://api.openai.com/v1/assistants', {
         method: 'POST',
@@ -74,10 +44,7 @@ const createAssistant = async (): Promise<Assistant> => {
             name: 'FlatMate',
             instructions: instructions,
             model: 'gpt-4',
-            parameters: {
-                top_p: 0.95,
-                temperature: 0.3
-            }
+            top_p: 0.9,
         }),
     });
 
