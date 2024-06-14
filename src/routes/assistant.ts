@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createAssistantHandler, createThreadHandler, addMessageHandler, runAssistantHandler } from '../controllers/assistant';
+import { createAssistantHandler, createThreadHandler, addMessageHandler, runAssistantHandler } from '../controllers/assistant.ts';
 
 const router = Router();
 
