@@ -1,7 +1,7 @@
 import 'tsconfig-paths/register';
 import express from 'express';
 import bodyParser from 'body-parser';
-import assistantRoutes from './routes/assistant.ts';
+import assistantRoutes from './routes/assistant';
 import dotenv from 'dotenv';
 
 // Load environment variables from .env file

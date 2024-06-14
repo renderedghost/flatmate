@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "reset": "npm run clean:all && npm run build:all && npm run start:all",
+        "reset": "npm run clean:all && npm run build:all",
         "clean:all": "rm -rf dist tsconfig.node.tsbuildinfo tsconfig.tsbuildinfo",
         "build:all": "npm run build:css && npm run build:storybook && npm run build:app",
         "build:app": "tsc --build tsconfig.json && tsc --build tsconfig.node.json && vite build",
